@@ -8,11 +8,11 @@ class Evaluator:
     def __init__(self, dataset, rankings):
         ed = EvaluationData(dataset, rankings)
         self.dataset = ed
-        
+    #Adiciona um algoritmo a ser avaliado 
     def AddAlgorithm(self, algorithm, name):
         alg = EvaluatedAlgorithm(algorithm, name)
         self.algorithms.append(alg)
-        
+    # Avalia os algoritmos   
     def Evaluate(self, doTopN):
         results = {}
         for algorithm in self.algorithms:
@@ -45,7 +45,7 @@ class Evaluator:
             print("Diversity: 1-S, where S is the average similarity score between every possible pair of recommendations")
             print("           for a given user. Higher means more diverse.")
             print("Novelty:   Average popularity rank of recommended items. Higher means more novel.")
-        
+    # Gera e imprime as top N recomendações para um usuário específico    
     def SampleTopNRecs(self, ml, testSubject=85, k=10):
         
         for algo in self.algorithms:
